@@ -1,8 +1,10 @@
 import unittest
-from utils import add_pyspark_path, quiet_py4j
+
+from utils import add_pyspark_path, quiet_py4j, add_jars
 
 add_pyspark_path()
 quiet_py4j()
+add_jars()
 
 from pyspark.context import SparkContext
 

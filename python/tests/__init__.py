@@ -1,6 +1,6 @@
-import subprocess as sub
-import os
 import logging
+import os
+import subprocess as sub
 
 
 def run_cmd(cmd):
@@ -12,6 +12,7 @@ def run_cmd(cmd):
         logging.error("The output of the command was [%s]" % err.output)
         raise
 
+
 CHECK_SPARK_HOME = """
 if [ -z "$SPARK_HOME" ]; then
    echo "Error: SPARK_HOME is not set, can't run tests."
@@ -21,10 +22,10 @@ fi
 os.system(CHECK_SPARK_HOME)
 
 # Dynamically load project root dir and jars.
-project_root = os.getcwd() + "/../../.."
-jars = run_cmd("ls %s/build/libs/prep-buddy-*.*-SNAPSHOT.jar" % project_root)
+project_root = os.getcwd() + "/.."
+jars = run_cmd("ls %s/target/prep-buddy-0.3.0.jar" % project_root)
 
 # Set environment variables.
-os.environ["PYSPARK_SUBMIT_ARGS"] = ("--jars %s --driver-class-path %s pyspark-shell") % (jars, jars)
+os.environ["PYSPARK_SUBMIT_ARGS"] = "--jars %s --driver-class-path %s pyspark-shell" % (jars, jars)
 
 # os.environ["SPARK_CONF_DIR"] = "%s/test/resources/conf" % os.getcwd()

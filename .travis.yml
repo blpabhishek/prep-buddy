@@ -1,3 +1,15 @@
-language: java
+sudo: required
+language: scala
+scala:
+  - 2.10.4
+install:
+   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+   - mvn test -B
+   - chmod 755 ./setup-project
+   - ./setup-project
+   - mvn jar:jar
+script:
+   - chmod 755 ./build-project
+   - ./build-project
 notifications:
   slack: data-commons:VQSMk3AeAik9Fg8lk64ElEJS

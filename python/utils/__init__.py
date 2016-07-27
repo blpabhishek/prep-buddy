@@ -30,3 +30,9 @@ def add_pyspark_path():
 def quiet_py4j():
     logger = logging.getLogger('py4j')
     logger.setLevel(logging.INFO)
+
+
+def add_jars():
+    project_root = os.getcwd() + "/../../.."
+    jars = ("%s/target/prep-buddy-0.3.0.jar" % project_root)
+    os.environ["PYSPARK_SUBMIT_ARGS"] = ("--jars %s --driver-class-path %s pyspark-shell") % (jars, jars)

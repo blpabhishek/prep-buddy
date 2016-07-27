@@ -1,7 +1,6 @@
-from py_prep_buddy.normalizers.normalizers import MinMaxNormalizer, ZScoreNormalizer, DecimalScalingNormalizer
-from py_prep_buddy.rdds.transformable_rdd import TransformableRDD
 from utils.python_test_case import PySparkTestCase
-import tests
+from pyprepbuddy.normalizers.normalizers import MinMaxNormalizer, ZScoreNormalizer, DecimalScalingNormalizer
+from pyprepbuddy.rdds.transformable_rdd import TransformableRDD
 
 
 class NormalizationTest(PySparkTestCase):
